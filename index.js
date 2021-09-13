@@ -10,7 +10,8 @@ const app = express()
 conectarDB()    //ejecuto la funcion que está en db.js
 
 //habilitar cors
-app.use(cors()) //para que no moleste el cartel de cors de chrome en la consola
+app.use(cors({ credentials: true, origin: true })); //para que no moleste el cartel de cors de chrome en la consola
+app.options("*", cors());
 
 //Habilitar express.json
 app.use(express.json({extended: true}))
