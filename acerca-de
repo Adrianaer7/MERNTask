@@ -1,0 +1,20 @@
+"npm init" para crear el package.json. El package.json almacena las dependencias de desarrollo, tambien sirve para crear los scripts.
+Los scripts llevan un . porque quiere decir que van a buscar el archivo index.js donde está
+
+"npm i -D nodemon" para que cada vez que haya cambios en el codigo, reinicie el servidor, asi yo no lo tengo que hacer manualmente.
+
+"npm run dev" para ejecutar nodemon y que se reinicie el servidor por cada cambio que haga
+
+"npm i
+    "express" es el servidor que usamos
+    "mongoose" es el orm de mongo para facilitar las consultas en la bd
+    "dotenv" nos va a permitir crear archivos con variables de entorno. Estas variables en desarrollo son unas, y en produccion son otras
+"
+
+"npm i bcryptjs" para hashear los passwords de los usuarios
+
+"npm i express-validator" para validar los campos
+
+"npm i jsonwebtoken" nos permite generar un jwt cuando creemos un nuevo usuario y tambien nos va a permitir crear el jwt cuando la autenticacion sea correcta
+
+"npm i cors" para que no moleste el cartel de cors de chrome en la consola. Lo uso en index.js
