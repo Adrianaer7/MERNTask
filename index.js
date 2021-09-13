@@ -17,7 +17,7 @@ app.options("*", cors());
 app.use(express.json({extended: true}))
 
 //Puerto de la app. Cuando haga el deployment en Heroku se espera que la variable de entorno se llame PORT
-const port = process.env.port || 4000;   //Si existe process.env.PORT, entonces se asigna el puerto, sino, se asigna puerto 4000. Puede ser cualquier numero menos el puerto del cliente que es 3000
+const PORT = process.env.PORT || 4000;   //Si existe process.env.PORT, entonces se asigna el puerto, sino, se asigna puerto 4000. Puede ser cualquier numero menos el puerto del cliente que es 3000
 
 //Importar rutas
 app.use("/api/usuarios", require("./routes/usuarios"))
@@ -26,6 +26,6 @@ app.use("/api/proyectos", require("./routes/proyectos"))
 app.use("/api/tareas", require("./routes/tareas"))
 
 //Arrancar la app
-app.listen(port, "0.0.0.0", () => { //al puerto y al dominio lo va a asignar Heroku
-    console.log(`El servidor esta funcionando en el puerto ${port}`)
+app.listen(PORT, "0.0.0.0", () => { //al puerto y al dominio lo va a asignar Heroku
+    console.log(`El servidor esta funcionando en el puerto ${PORT}`)
 })
