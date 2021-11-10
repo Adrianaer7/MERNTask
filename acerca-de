@@ -18,3 +18,34 @@ Los scripts llevan un . porque quiere decir que van a buscar el archivo index.js
 "npm i jsonwebtoken" nos permite generar un jwt cuando creemos un nuevo usuario y tambien nos va a permitir crear el jwt cuando la autenticacion sea correcta
 
 "npm i cors" para que no moleste el cartel de cors de chrome en la consola. Lo uso en index.js
+
+
+-Descargar e instalar  el CLI de Heroku
+-Descargar e instalar git
+-Crear un nuevo repositorio en Github (colocar nombre y listo)
+-Pararme con el cmd en la carpeta de servidor (en este caso, porque está separado cliente de servidor) y colocar todos los git que aparecen en "on create a new repository on the command line"
+-Crear una cuenta de Heroku en la pagina
+-Crear una nueva app en la pagina de Heroku
+-En cmd-servidor, poner heroku login
+-Poner heroku create --remote production
+-Poner git push production main (a esto se le conoce como integracion continua). Si sale error que no encuentra lenguaje, tratar de poner en consola comando para que reconozca el node.js. Si no funciona, seguir los pasos de la pagina de heroku (que están actualizados).
+-En la pagina de Heroku, ir a settings>reveals config vars y colocar lo que esté declarado en la variable de entorno y lo que está despues del = en Settings-Variables de entorno. Tambien hacer lo mismo con SECRETA.
+En MERNTask>cliente> creamos un archivo con nombre .env
+-Copiar lo que está en .env.development.local
+-Pegarlo en .env
+-Cambiar el localhost que hay por la url de la app que creamos en la pagina de Heroku
+-Crear un archivo llamado _redirects en la carpeta de cliente. El contenido de la carpeta es : /*  /index.html  200	//como netlify no soporta aplicaciones SPA (Aplicaciones de una sola pagina. O sea, no recarga la pagina para cambiar la vista), tengo que indicarle que cuando se se acceda a una ruta en especifico, pase primero por el index. Si no le coloco esto, al recargar la pagina en netlify, va a crashear.
+-Crear una build de cliente con cmd.
+-Arrastrarla a Netlify.
+-En el index.js del servidor poner: 
+	app.use(cors({ credentials: true, origin: true }))
+	app.options("*", cors()) //Para evitar problemas en consola de CORS
+
+	Cambiar app.listen(PORT, () => { 
+		por
+	 app.listen(PORT, "0.0.0.0", () => {
+-En cmd-servidor colocar:
+	git add .
+	git commit  -am "resumen de lo que se modificó"
+	git push -u origin main  //esto lo sube al repositorio de github y a la vez a heroku
+	git push production main
